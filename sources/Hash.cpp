@@ -4,9 +4,6 @@
 #include "Hash.hpp"
 
 void SetUpLogging() {
-    //Настройка логирования
-    // Файловый логгер, в который записываются результаты с уровнями логгирования
-    // trace и info
     auto TraceFileLogger = boost::log::add_file_log(
             boost::log::keywords::file_name =
                     "/Users/iluzaangirova/multithreads/logs/"
@@ -14,16 +11,12 @@ void SetUpLogging() {
             boost::log::keywords::rotation_size = 10 * 1024 * 1024,
             boost::log::keywords::format =
                     "[%TimeStamp%][%Severity%][%ThreadID%]: %Message%");
-    // Файловый логгер, в который записываются результаты с уровнем логгирования
-    // info
     auto InfoFileLogger = boost::log::add_file_log(
             boost::log::keywords::file_name =
                     "/Users/iluzaangirova/multithreads/logs/"
                     "InfoLog.log",
             boost::log::keywords::format =
                     "[%TimeStamp%][%Severity%][%ThreadID%]: %Message%");
-    // Консольный логгер, в который записываются результаты с уровнем логгирования
-    // info
     auto consoleLogger = boost::log::add_console_log(
             std::cout, boost::log::keywords::format =
                     "[%TimeStamp%][%Severity%][%ThreadID%]: %Message%");
