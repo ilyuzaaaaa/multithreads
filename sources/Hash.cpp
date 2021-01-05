@@ -21,7 +21,6 @@ void SetUpLogging() {
             std::cout, boost::log::keywords::format =
                     "[%TimeStamp%][%Severity%][%ThreadID%]: %Message%");
 
-    //Установка фильтрации
     TraceFileLogger->set_filter(boost::log::trivial::severity >=
                                 boost::log::trivial::trace);
     InfoFileLogger->set_filter(boost::log::trivial::severity ==
