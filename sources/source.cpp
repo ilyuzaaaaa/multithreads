@@ -41,7 +41,6 @@ void StartProcess(const int& argc, char **argv){
     unsigned int numberOfThreads;
     std::string json_path;
     std::srand(time(nullptr));
-    // Проверка числа потоков
     switch (argc) {
         case 1:
             numberOfThreads = std::thread::hardware_concurrency();
@@ -66,16 +65,11 @@ void StartProcess(const int& argc, char **argv){
             throw std::out_of_range("Invalid number of arguments!!!");
     }
     SetUpLogging();
-    // Добавление распространенных атрибутов в лог
     boost::log::add_common_attributes();
     std::vector<std::thread> threads;
     JsonFiler json_obj;
-    //Задает емкость контейнера по крайней мере, size. Новая память выделяется при
-    //необходимости.
     threads.reserve(numberOfThreads);
-    // Обработка сигналов терминала
     std::signal(SIGINT, stopProcess);
-    // Запуск потоков
 
     for (size_t i = 0; i < numberOfThreads; i++) {
         threads.emplace_back(hashGenerator, std::ref(json_obj));
