@@ -360,7 +360,7 @@ macro(HunterGate)
     set_property(GLOBAL PROPERTY HUNTER_GATE_DONE YES)
   endif()
 
-  # First HunterGate command will init Hunter, others will be ignored
+  # First HunterGate command will SetUpLogging Hunter, others will be ignored
   get_property(_hunter_gate_done GLOBAL PROPERTY HUNTER_GATE_DONE SET)
 
   if(NOT HUNTER_ENABLED)
